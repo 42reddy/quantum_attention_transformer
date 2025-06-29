@@ -5,7 +5,7 @@ from data_generation import Data_Generator
 from tqdm import tqdm
 
 
-T = 1000     # Total simulation time
+T = 10     # Total simulation time
 dt = 0.001   # timestep
 input_len = 50  # input feature vector to the transformer
 pred_length = 10  # output sequence length
@@ -33,13 +33,13 @@ batch_size = 64
 learning_rate = 1e-4
 
 model = Transformer(
-    n_layers=5,
-    d_model=128,
-    d_k=64,
-    ff_dim=256,
+    n_layers=2,
+    d_model=64,
+    d_k=32,
+    ff_dim=128,
     seq_len=X_train.shape[1],
     output_dim=y_train.shape[2],
-)     # initilizes the custom transformer model
+)     # initilize custom transformer model
 dummy_input = tf.zeros((1, 50, 3))  # (batch, seq_len, input_dim)
 model(dummy_input)  # Initiate arbitrary weights
 model.summary()
